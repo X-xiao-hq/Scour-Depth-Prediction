@@ -29,7 +29,7 @@ def main():
 	st.title("Scour Depth Prediction App")
 	st.subheader("Input Parameters")
 	#X = df[['Rep', 'Red', KC', 'shield', ]].values
-	 Rep = st.number_input("Rep (Particle Reynolds Number)", min_value=0.0, value=1000.0)
+	Rep = st.number_input("Rep (Particle Reynolds Number)", min_value=0.0, value=1000.0)
     Red = st.number_input("Red (Reynolds Number)", min_value=0.0, value=10000.0)
     KC = st.number_input("KC (Keulegan-Carpenter Number)", min_value=0.0, value=10.0)
     shield = st.number_input("Shield Parameter", min_value=0.0, value=0.05)
