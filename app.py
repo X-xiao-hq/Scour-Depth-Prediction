@@ -39,8 +39,8 @@ def main():
     
     if st.button("Predict"):
         st.write("Predicted scour depth wrt the diamater is : ")
-        if model_choice == "XGB":
-            loaded_model = load_model("XGB.pkl")
+        if model_choice == "xgb model":
+            loaded_model = load_model("xgb_model.pkl")
             prediction = loaded_model.predict(single_sample)
             st.write(prediction[0])
         elif model_choice == "train test data":
