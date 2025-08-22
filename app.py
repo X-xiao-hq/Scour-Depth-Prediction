@@ -35,7 +35,7 @@ def main():
     single_sample = np.array(feature_list).reshape(1,-1)
 
     # 修正：下拉菜单选项应该与实际的模型文件对应
-    model_choice = st.selectbox("Select Model",["xgb model","train test data","shap values"])
+    model_choice = st.selectbox("Select Model",["xgb model","XGB","shap values"])
     
     if st.button("Predict"):
         st.write("Predicted scour depth wrt the diamater is : ")
