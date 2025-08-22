@@ -28,55 +28,31 @@ def main():
 	"""Scour Depth Prediction App"""
 	st.title("Scour Depth Prediction App")
 	st.subheader("Input Parameters")
-	#X = df[['y/Dp', 'Dp/d50', 'Fd', 'sigma', 'log(T)']].values
-	y_Dp = st.number_input("y/Dp")
-	Dp_d50 = st.number_input("Dp/d50")
-	Fd = st.number_input("Fd")
-	sigma = st.number_input("sigma")
-	logT = st.number_input("log(T)")
+	#X = df[['Rep', 'Red', KC', 'shield', ]].values
+	 Rep = st.number_input("Rep (Particle Reynolds Number)", min_value=0.0, value=1000.0)
+    Red = st.number_input("Red (Reynolds Number)", min_value=0.0, value=10000.0)
+    KC = st.number_input("KC (Keulegan-Carpenter Number)", min_value=0.0, value=10.0)
+    shield = st.number_input("Shield Parameter", min_value=0.0, value=0.05)
 
-	feature_list = [y_Dp, Dp_d50, Fd, sigma, logT]
+	feature_list = [Rep, Red, KC, shield]
 	single_sample = np.array(feature_list).reshape(1,-1)
 
 	model_choice = st.selectbox("Select Model",["XGB","Extra Trees","Random Forest", "Ada Boost", "MLP", "Lasso", "Bayesian", "Ridge", "Elastic Net"])
 	if st.button("Predict"):
 		st.write("Predicted scour depth wrt the diamater is : ")
-		if model_choice == "XGB":
-			loaded_model = load_model("XGB.pkl")
+		if model_choice == "xgb model":
+			loaded_model = load_model("xgb_model.pkl")
 			prediction = loaded_model.predict(single_sample)
 			st.write(prediction[0])
-		elif model_choice == "Extra Trees":
-			loaded_model = load_model("Extra_trees.pkl")
+		elif model_choice == "train test data":
+			loaded_model = load_model("train_test_data.pkl")
 			prediction = loaded_model.predict(single_sample)
 			st.write(prediction[0])
-		elif model_choice == "Random Forest":
-			loaded_model = load_model("Random_forest.pkl")
+		elif model_choice == "shap values":
+			loaded_model = load_model("shap_values.pkl")
 			prediction = loaded_model.predict(single_sample)
 			st.write(prediction[0])
-		elif model_choice == "Ada Boost":
-			loaded_model = load_model("Ada_Boost.pkl")
-			prediction = loaded_model.predict(single_sample)
-			st.write(prediction[0])
-		elif model_choice == "MLP":
-			loaded_model = load_model("MLP.pkl")
-			prediction = loaded_model.predict(single_sample)
-			st.write(prediction[0])
-		elif model_choice == "Lasso":
-			loaded_model = load_model("Lasso.pkl")
-			prediction = loaded_model.predict(single_sample)
-			st.write(prediction[0])
-		elif model_choice == "Bayesian":
-			loaded_model = load_model("Bayesian.pkl")
-			prediction = loaded_model.predict(single_sample)
-			st.write(prediction[0])
-		elif model_choice == "Ridge":
-			loaded_model = load_model("Ridge.pkl")
-			prediction = loaded_model.predict(single_sample)
-			st.write(prediction[0])
-		elif model_choice == "Elastic Net":
-			loaded_model = load_model("Elastic_Net.pkl")
-			prediction = loaded_model.predict(single_sample)
-			st.write(prediction[0])
+		
 
 if __name__ == '__main__':
 	main()
