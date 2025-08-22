@@ -43,8 +43,8 @@ def main():
             loaded_model = load_model("xgb_model.pkl")
             prediction = loaded_model.predict(single_sample)
             st.write(prediction[0])
-        elif model_choice == "train test data":
-            loaded_model = load_model("train_test_data.pkl")
+        elif model_choice == "XGB":
+            loaded_model = load_model("XGB.kpl")
             prediction = loaded_model.predict(single_sample)
             st.write(prediction[0])
         elif model_choice == "shap values":
